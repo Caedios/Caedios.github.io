@@ -1,0 +1,39 @@
+<html>
+  <head>
+    <script>
+      function onSubmit(token) {
+        alert('thanks ' + document.getElementById('field').value);
+      }
+
+      function validate(event) {
+        event.preventDefault();
+
+        if (!document.getElementById('field').value) {
+          alert('You must add text to the required field');
+        } else {
+          hcaptcha.execute();
+        }
+      }
+
+      function onLoad() {
+        var element = document.getElementById('submit');
+
+        element.onclick = validate;
+      }
+    </script>
+    <script src="https://js.hcaptcha.com/1/api.js?onload=onLoad" async defer></script>
+  </head>
+  <body>
+    <form>
+      Name: (required) <input id="field" name="field" />
+      <div
+        id="hcaptcha"
+        class="h-captcha"
+        data-sitekey="93383d70-5338-4d4c-9b6e-b1bc28d00198"
+        data-callback="onSubmit"
+        data-size="invisible"
+      ></div>
+      <button id="submit">submit</button>
+    </form>
+  </body>
+</html>
