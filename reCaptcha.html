@@ -17,10 +17,43 @@
         data-action='submit'>Check</button>
   <button type="submit">Submit</button>
  </form>
- <script>
+ <!-- <script>
    function onSubmit(token) {
      document.getElementById("captcha").submit();
    }
+</script> -->
+ <script>
+function onSubmit(token) {
+    // 发送到您创建的PHP验证文件
+    fetch('verify-recaptcha.php', {  // 根据实际路径调整
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            recaptchaToken: token
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            // reCAPTCHA 验证成功，检查分数（v3推荐）
+            if (data.score >= 0.5) { // 设置合适的分数阈值
+                document.getElementById("captcha").submit();
+            } else {
+                alert('验证分数过低，请重试');
+                grecaptcha.reset();
+            }
+        } else {
+            alert('reCAPTCHA 验证失败: ' + (data['error-codes'] ? data['error-codes'].join(', ') : '未知错误'));
+            grecaptcha.reset();
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('验证过程中出现错误');
+    });
+}
 </script>
 </body>
 </html>
