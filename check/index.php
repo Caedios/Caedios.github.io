@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     
     // 您的reCAPTCHA secret key
-    $secretKey = "YOUR_SECRET_KEY_HERE"; // 替换为您的实际secret key
+    $secretKey = "6LcdqvorAAAAADRZJnYxtBtdSGJCgjhUeB4jUgYM"; // 替换为您的实际secret key
     
     // 向Google验证
     $url = 'https://www.google.com/recaptcha/api/siteverify';
