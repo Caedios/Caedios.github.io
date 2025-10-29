@@ -15,7 +15,7 @@ $( document ).ready(function() {
 		var $form = $(this);
 
 		grecaptcha.ready(function () {
-			grecaptcha.execute('6LfxK6UZAAAAAK1OetSxFMhHatpdHHOg5OI4NPHA', {action: 'submit'}).then(function (token) {
+			grecaptcha.execute('6LcdqvorAAAAAJX71Q0QREeyqmRGvr3jcvbLWsRQ', {action: 'submit'}).then(function (token) {
 				
 				$('#g-recaptcha-response').val(token);
 
