@@ -25,7 +25,7 @@
  <script>
 function onSubmit(token) {
     // 发送到您创建的PHP验证文件
-    fetch('verify-recaptcha.php', {  // 根据实际路径调整
+    fetch('/captcha/reCaptchaV3/post.php', {  // 根据实际路径调整
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
